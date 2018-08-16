@@ -28,4 +28,30 @@
   <%= @listing.rent_price %>
 </p>
 
+<p>
+  <!--
+    This part must be refactored into more appropiate approach.
+  -->
+  <%
+    sum = 0.0
+    avg = 0
+
+    @listing.reviews.each do |review|
+      sum += review.rating
+    end
+  %>
+  <%
+    if @listing.reviews.size != 0
+      avg = sum / @listing.reviews.size
+    end
+  %>
+
+  <strong> Average rating: </strong> <%= avg %>
+
+</p>
+
+<!--
+  display rating box here or somewhere in this page.
+-->
+
 <%= link_to 'Back', listings_path %>
